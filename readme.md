@@ -3,8 +3,11 @@
 **From Interatomic Potentials to Fuel Properties**
 
 [[Python Version](https://img.shields.io/badge/python-3.8%2B-blue)](https://www.python.org/)
+
 [[PyTorch](https://img.shields.io/badge/PyTorch-2.0%2B-red)](https://pytorch.org/)
+
 [[License](https://img.shields.io/badge/license-CC--BY--4.0-green)](LICENSE)
+
 [[DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.17972807.svg)](https://doi.org/10.5281/zenodo.17972807)
 
 > **Dynamic Atomic Representations: From Interatomic Potentials to Fuel Properties**  
@@ -51,7 +54,7 @@ CombNetPack overcomes these bottlenecks through:
 2. **Physics-informed architecture**: Integrates Koopman dynamics and attention-enhanced continuous filters
 3. **Multi-scale prediction**: Simultaneously predicts atomic forces (R² > 0.99) and macroscopic combustion properties (R² > 0.95)
 
-![CombNetPack Framework](docs/images/framework_overview.png)
+![CombNetPack Framework](docs/fig_toc.pdf)
 *Figure 1: Overall architecture of CombNetPack for unified prediction of combustion properties from atomic coordinates to fuel performance metrics.*
 
 ---
