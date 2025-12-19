@@ -20,6 +20,8 @@
 > *Corresponding authors: ldg123@mail.ustc.edu.cn; yuhaizhu@ahu.edu.cn; fuyao@ustc.edu.cn
 
 ---
+![Overview](docs/imgs/fig_toc_01.png)
+
 
 ## 📋 Table of Contents
 
@@ -54,7 +56,7 @@ CombNetPack overcomes these bottlenecks through:
 2. **Physics-informed architecture**: Integrates Koopman dynamics and attention-enhanced continuous filters
 3. **Multi-scale prediction**: Simultaneously predicts atomic forces (R² > 0.99) and macroscopic combustion properties (R² > 0.95)
 
-![CombNetPack Framework](docs/fig_toc.pdf)
+![CombNetPack Framework](docs/imgs/fig_main_01.png)
 *Figure 1: Overall architecture of CombNetPack for unified prediction of combustion properties from atomic coordinates to fuel performance metrics.*
 
 ---
