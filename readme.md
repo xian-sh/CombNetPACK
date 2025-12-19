@@ -1,12 +1,5 @@
 # CombNetPack: Dynamic Atomic Representations for Combustion Modeling
 
-**From Interatomic Potentials to Fuel Properties**
-
-[[Python Version](https://img.shields.io/badge/python-3.8%2B-blue)](https://www.python.org/)  
-[[PyTorch](https://img.shields.io/badge/PyTorch-2.0%2B-red)](https://pytorch.org/)  
-[[License](https://img.shields.io/badge/license-CC--BY--4.0-green)](LICENSE)  
-[[DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.17972807.svg)](https://doi.org/10.5281/zenodo.17972807)
-
 > **Dynamic Atomic Representations: From Interatomic Potentials to Fuel Properties**  
 > Zhan Si¹, Jingjing Hu², Qiqi Zhang³, Deguang Liu¹*, Haizhu Yu³*, Yao Fu¹*  
 > ¹University of Science and Technology of China  
@@ -45,18 +38,14 @@
 
 ## Key Features
 
-### Dynamic Atomic Representation (GAF)
+### Graph-Adaptive Atomic Features (GAF) module constructs adaptive, physics-informed embeddings:
+
+![GAF module](docs/imgs/fig_gaf_01.png)  
+*Figure 2. Graph-Adaptive Atomic Features (GAF) module.*
 
 - **GACE (Graph Atomic Cluster Expansion)**: many-body topological interactions via message-passing  
-- **ACF (Atom-Centered Features)**: geometric (radial, angular) and electrostatic descriptors  
+- **ACF (Atom-Centered Features)**: geometric (radial, angular) and electrostatic descriptors
 
-### Multi-Task Learning
-
-| Scale | Properties | Accuracy |
-|-------|-----------|----------|
-| **Microscopic** | Atomic forces, energies, velocities | R² > 0.99 |
-| **Thermodynamic** | ΔHc, ΔHf, HoV | R² > 0.98 |
-| **Combustion** | LFS, RON, MON, ignition delay | R² > 0.95 |
 
 ---
 
@@ -92,6 +81,27 @@ CombNetPack/
 ├── requirements.txt
 └── README.md
 ```
+
+## Core Components
+
+### 1. Graph-Adaptive Atomic Features (GAF)
+
+- Treats atoms as dynamic graph nodes
+- Encodes multi-body expansion via GACE + ACF
+- Output: 32-128D adaptive atomic embeddings
+
+### 2. CombNet Core
+
+- Interaction Blocks: Atom-wise MLP + Attention-CFConv (5 Å cutoff)
+- Koopman Autoencoder: Lifts features to linear-dynamics latent space
+- Multi-head Output: Separate branches for forces, energies, velocities, and fuel properties
+
+### 3. Physics-Informed Modules
+
+- Morse Potential: Encodes bond dissociation behavior
+- Attention Mechanism: Context-aware neighbor weighting
+- Condition Encoding: Integrates temperature, pressure, equivalence ratio
+
 
 ---
 
@@ -131,7 +141,7 @@ pip install numpy scipy pandas matplotlib seaborn tqdm pyyaml tensorboard jupyte
 
 ### HAC Database (Zenodo)
 
-**DOI:** https://doi.org/10.5281/zenodo.17972807
+**DOI:** https://zenodo.org/records/17972807
 
 From the Zenodo record:
 
@@ -323,13 +333,14 @@ python run.py
   note={In preparation}
 }
 
-@dataset{si2025hac,
-  author={Si, Zhan and Hu, Jingjing and Liu, Deguang and Yu, Haizhu},
-  title={HAC Database: Hydrogen-Ammonia Combustion AIMD Dataset},
-  year={2025},
-  publisher={Zenodo},
-  doi={10.5281/zenodo.17972807},
-  url={https://zenodo.org/records/17972807}
+@dataset{zhan_et_al_2025,
+  author    = {Zhan, S. and Jingjing, H. and Deguang, L. and Haizhu, Y.},
+  title     = {{HAC Database}},
+  year      = {2025},
+  publisher = {Zenodo},
+  doi       = {10.5281/zenodo.17972807},
+  url       = {https://doi.org/10.5281/zenodo.17972807},
+  note      = {Data set}
 }
 ```
 
