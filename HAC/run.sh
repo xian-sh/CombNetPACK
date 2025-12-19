@@ -1,10 +1,10 @@
 # Run everything (feature extraction + velocity training)
-python main.py
+python run.py
 # or
-python main.py both
+python run.py both
 
 # Run only feature extraction
-python main.py extract
+python run.py extract
 
 # Run only velocity training
-python main.py train
+python run.py train
