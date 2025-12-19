@@ -1,7 +1,7 @@
 """
 Neural Network Models
 =====================
-GNN and Transformer models for GAF features and velocity prediction
+GNN and CombNet models for GAF features and velocity prediction
 """
 
 import torch
@@ -117,7 +117,7 @@ class SimpleConvLayer(MessagePassing):
 
 
 # ============================================================================
-# Transformer Models for Velocity Prediction
+# CombNet Models for Velocity Prediction
 # ============================================================================
 
 class MultiHeadAttention(nn.Module):
@@ -177,9 +177,9 @@ class MultiHeadAttention(nn.Module):
         return output
 
 
-class TransformerEncoderLayer(nn.Module):
+class CombNetEncoderLayer(nn.Module):
     """
-    Single Transformer encoder layer
+    Single CombNet encoder layer
     """
     def __init__(self, d_model, n_heads, dropout=0.1):
         super().__init__()
@@ -250,9 +250,9 @@ class AtomicEncoder(nn.Module):
         return self.encoder(x)
 
 
-class VelocityTransformer(nn.Module):
+class VelocityCombNet(nn.Module):
     """
-    Transformer-based model for velocity prediction
+    CombNet-based model for velocity prediction
     """
     def __init__(self, config):
         super().__init__()
@@ -265,9 +265,9 @@ class VelocityTransformer(nn.Module):
             config.DROPOUT
         )
         
-        # Transformer encoder layers
+        # CombNet encoder layers
         self.transformer_layers = nn.ModuleList([
-            TransformerEncoderLayer(
+            CombNetEncoderLayer(
                 config.HIDDEN_DIM, 
                 config.N_HEADS, 
                 config.DROPOUT

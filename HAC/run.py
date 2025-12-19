@@ -13,7 +13,7 @@ from tqdm import tqdm
 from config import GAFConfig, TrainingConfig
 from utils import setup_logger, load_npz_file
 from features import compute_descriptor, NodeFeatureBuilder
-from models import SimpleGNN, VelocityTransformer
+from models import SimpleGNN, VelocityCombNet
 from dataset import load_velocity_dataset, create_data_loaders
 from train import train_epoch, evaluate_model, save_checkpoint
 
@@ -282,7 +282,7 @@ def train_velocity_model():
     train_loader, val_loader, test_loader = create_data_loaders(dataset, TrainingConfig, logger)
     
     # Create model
-    model = VelocityTransformer(TrainingConfig).to(device)
+    model = VelocityCombNet(TrainingConfig).to(device)
     
     total_params = sum(p.numel() for p in model.parameters())
     trainable_params = sum(p.numel() for p in model.parameters() if p.requires_grad)
